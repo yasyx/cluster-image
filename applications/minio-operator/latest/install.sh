@@ -12,15 +12,12 @@ done
 
 kubectl-minio init
 kubectl --namespace minio-operator create deployment minio-client --image IMAGE_MC -- tail -F /etc/hosts || true
-kubectl-minio tenant create -h
-echo "
-a new MinIO tenant:
 kubectl-minio tenant create internal \
-  --image IMAGE_MINIO \
+  --image minio/minio:RELEASE.2024-03-05T04-48-44Z \
   --namespace minio-operator \
-  --storage-class local-path-retain \
-  --servers 3 --volumes 6 --capacity 1Ti \
+  --storage-class openebs-hostpath \
+  --servers 1 --volumes 8 --capacity 8Gi \
   --enable-audit-logs=false \
   --enable-prometheus=false \
   --disable-tls
-"
+

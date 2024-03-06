@@ -16,7 +16,7 @@ if [ -s install.sh ]; then
   mv install.sh "opt/$NAME"
 fi
 pushd "opt/$NAME" && {
-  [ -s kubectl-minio ] || wget -qO kubectl-minio "https://github.com/minio/operator/releases/download/$VERSION/kubectl-minio_${VERSION#*v}_linux_$ARCH"
+  [ -s kubectl-minio ] || wget -qO kubectl-minio "https://staging-udesk.oss-cn-beijing.aliyuncs.com/czl/kubectl-minio_${VERSION#*v}_linux_$ARCH"
   if [ -s install.sh ]; then
     sed -i "s#IMAGE_MC#$IMAGE_MC#g;s#IMAGE_MINIO#$IMAGE_MINIO#g" install.sh
   fi
@@ -26,7 +26,7 @@ popd
 
 mkdir -p images/shim
 pushd images/shim && {
-  [ -s /tmp/kubectl-minio ] || wget -qO "/tmp/kubectl-minio" "https://github.com/minio/operator/releases/download/$VERSION/kubectl-minio_${VERSION#*v}_linux_amd64"
+  [ -s /tmp/kubectl-minio ] || wget -qO "/tmp/kubectl-minio" "https://staging-udesk.oss-cn-beijing.aliyuncs.com/czl/kubectl-minio_${VERSION#*v}_linux_$ARCH"
   chmod a+x /tmp/kubectl-minio
   {
     echo "$IMAGE_MC"
