@@ -13,7 +13,7 @@ done
 kubectl-minio init
 kubectl --namespace minio-operator create deployment minio-client --image IMAGE_MC -- tail -F /etc/hosts || true
 kubectl-minio tenant create internal \
-  --image minio/minio:RELEASE.2024-03-05T04-48-44Z \
+  --image IMAGE_MINIO \
   --namespace minio-operator \
   --storage-class openebs-hostpath \
   --servers 1 --volumes 8 --capacity 8Gi \

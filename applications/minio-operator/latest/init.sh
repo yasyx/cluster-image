@@ -8,8 +8,8 @@ export readonly ARCH=${1:-amd64}
 export readonly NAME=${2:-$(basename "${PWD%/*}")}
 export readonly VERSION=${3:-$(basename "$PWD")}
 
-IMAGE_MC="minio/mc:$(wget -qO- "https://api.github.com/repos/minio/mc/releases/latest" | grep tag_name | awk -F\" '{print $(NF-1)}' || latest)"
-IMAGE_MINIO="minio/minio:$(wget -qO- "https://api.github.com/repos/minio/minio/releases/latest" | grep tag_name | awk -F\" '{print $(NF-1)}' || latest)"
+IMAGE_MC="minio/mc:RELEASE.2024-03-03T00-13-08Z"
+IMAGE_MINIO="minio/minio:RELEASE.2024-02-09T21-25-16Z"
 
 mkdir -p "opt/$NAME"
 if [ -s install.sh ]; then
