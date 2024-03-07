@@ -17,7 +17,5 @@ kubectl-minio tenant create internal \
   --namespace minio-operator \
   --storage-class openebs-hostpath \
   --servers 1 --volumes 8 --capacity 8Gi \
-  --enable-audit-logs=false \
-  --enable-prometheus=false \
   --disable-tls
 
